@@ -1,0 +1,12 @@
+html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+
+.appName {
+    font-size: 14px;
+}
+
+.genre {
+    color: #807d7d;
+    font-size: 12px;
+}

@@ -1,0 +1,12 @@
+.item {
+    width: 100px;
+    margin-right: 20px;
+}
+
+.item div {
+    white-space: pre-wrap;
+}
+
+.item img {
+    border-radius: 25%;
+}

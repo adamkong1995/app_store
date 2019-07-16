@@ -1,7 +1,23 @@
 import axios from 'axios';
-import appList from '../data/top100'
+import recommended from '../data/recommended';
+import appList from '../data/top100';
 
-import { FETCH_APP_LIST, SET_CURRENT_PAGE, ADD_CURRENT_PAGE, SUBTRACT_CURRENT_PAGE } from './types';
+import { FETCH_RECOMMENDED_LIST, FETCH_APP_LIST, SET_CURRENT_PAGE, ADD_CURRENT_PAGE, SUBTRACT_CURRENT_PAGE } from './types';
+
+export const fetchRecommendedList = () => async dispatch => {
+    const res = recommended.feed.results;
+    const recommends = [];
+
+    for(let i=0; i<res.length; i++) {
+        let recommend = {};
+
+        recommend.name = res[i].name;
+        recommend.icon = res[i].artworkUrl100;
+        recommend.genre = res[i].genres[0].name;
+        recommends.push(recommend);
+    };
+    await dispatch({ type: FETCH_RECOMMENDED_LIST, payload: recommends });
+};
 
 export const fetchAppList = page => async dispatch => {
     const res = appList.feed.results;

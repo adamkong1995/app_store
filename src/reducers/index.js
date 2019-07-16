@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import appListReducers from './appListReducer';
+import recommendedReducer from './recommendedReducer';
+import appListReducer from './appListReducer';
 import pageNumReducer from './pageNumReducer';
 
 export default combineReducers({
-    appList: appListReducers,
+    recommended: recommendedReducer,
+    appList: appListReducer,
     pageNum: pageNumReducer
 });

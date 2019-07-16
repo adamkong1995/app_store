@@ -11,8 +11,8 @@ const ListItem = ({ icon, name, genre, rating, userCount, ranking }) => {
             <div>{ranking}</div>
             <img className={isOdd(ranking) ? 'odd': 'even'} src={icon} alt='icon' width='100' height='100'/>
             <div>
-                <div>{name}</div>
-                <div>{genre}</div>
+                <div className='appName'>{name}</div>
+                <div className='genre'>{genre}</div>
                 <div>{renderStar(rating)}{`(${userCount})`}</div>
             </div>
         </div>

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 
-import Listing from './Listing/Listing';
+import Recommendation from './recommendation/Recommendation'
+import Listing from './listing/Listing';
+
+import './App.css';
 
 const Search = () => <div>Search</div>;
-const Recommendation = () => <div>Recommendation</div>;
+
 
 
 class App extends Component {

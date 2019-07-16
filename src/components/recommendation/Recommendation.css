@@ -1,0 +1,10 @@
+ul {
+    display: flex;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+ul li {
+    display: inline-block;
+    top:0;
+}
