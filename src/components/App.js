@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
+import Listing from './Listing/Listing';
+
 const Search = () => <div>Search</div>;
 const Recommendation = () => <div>Recommendation</div>;
-const Listing = () => <div>Listing</div>;
+
 
 class App extends Component {
     render() {
