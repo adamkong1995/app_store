@@ -18,8 +18,7 @@ class Recommendation extends Component {
             return (
                 <li>
                     <Item name={name} icon={icon} genre={genre} />
-                </li>
-                
+                </li> 
             );
         });
     };
