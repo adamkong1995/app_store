@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setPageNumber } from '../../actions';
-
 const Pagination = ({ pageNum, setPageNumber }) => {
     return (
         <div>
@@ -13,7 +11,7 @@ const Pagination = ({ pageNum, setPageNumber }) => {
     );
 };
 
-const renderButton = (setPageNumber) => {
+const renderButton = setPageNumber => {
     const button = [];
     for(let i=1; i < 11; i++) {
         button.push(<button key={i} onClick={()=>setPageNumber('set', i)}>{i}</button>)
@@ -25,4 +23,4 @@ const mapStateToProps = ({ pageNum }) => {
     return { pageNum }
 };
 
-export default connect(mapStateToProps, { setPageNumber })(Pagination);
+export default connect(mapStateToProps, { })(Pagination);

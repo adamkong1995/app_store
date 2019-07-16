@@ -5,7 +5,7 @@ export default (state=1, {payload, type}) => {
         case ADD_CURRENT_PAGE:
             return payload < 10 ? payload + 1: state;
         case SUBTRACT_CURRENT_PAGE:
-            return payload > 0 ? payload - 1: state;
+            return payload > 1 ? payload - 1: state;
         case SET_CURRENT_PAGE:
             return payload;
         default:

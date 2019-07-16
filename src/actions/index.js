@@ -4,14 +4,19 @@ import appList from '../data/top100'
 import { FETCH_APP_LIST, SET_CURRENT_PAGE, ADD_CURRENT_PAGE, SUBTRACT_CURRENT_PAGE } from './types';
 
 export const fetchAppList = page => async dispatch => {
-    const res = appList.feed.results
-
+    const res = appList.feed.results;
     let maxIndex = (page * 10);
     let minIndex = maxIndex - 10;
-
     const apps = res.slice(minIndex, maxIndex)
 
-    dispatch({ type: FETCH_APP_LIST, payload: apps });
+    const appDetails = [];
+
+    for(const app of apps) {
+        let res = await axios.get(`https://itunes.apple.com/hk/lookup?id=${app.id}`);
+        await appDetails.push(res.data.results[0]);
+    };
+
+    await dispatch({ type: FETCH_APP_LIST, payload: appDetails });
 };
 
 export const setPageNumber = (type, pageNum) => async dispatch => {
