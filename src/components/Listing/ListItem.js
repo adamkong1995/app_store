@@ -16,7 +16,7 @@ const ListItem = ({ icon, name, genre, rating, userCount, ranking }) => {
                 <div>{renderStar(rating)}{`(${userCount})`}</div>
             </div>
         </div>
-    )
+    );
 };
 
 const isOdd = n => n % 2 === 0;

@@ -21,12 +21,12 @@ class Listing extends Component {
     renderItem () {
         return _.map(this.props.appList, ({artworkUrl512, trackName, primaryGenreName, averageUserRating, userRatingCount, ranking})=> {
             return <ListItem icon={artworkUrl512} name={trackName} genre={primaryGenreName} rating={averageUserRating} userCount={userRatingCount} ranking={ranking} />
-        })
-    }
+        });
+    };
 
     render() {
         return (
-            <div>
+            <div style={{"overflow-y": "scroll", "height":"600px"}}>
                 {this.renderItem()}
                 <Pagination setPageNumber={this.props.setPageNumber}/>
             </div>

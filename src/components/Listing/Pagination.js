@@ -16,11 +16,11 @@ const renderButton = setPageNumber => {
     for(let i=1; i < 11; i++) {
         button.push(<button key={i} onClick={()=>setPageNumber('set', i)}>{i}</button>)
     };
-    return button
-}
+    return button;
+};
 
 const mapStateToProps = ({ pageNum }) => {
-    return { pageNum }
+    return { pageNum };
 };
 
 export default connect(mapStateToProps, { })(Pagination);

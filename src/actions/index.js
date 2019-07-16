@@ -7,7 +7,7 @@ export const fetchAppList = page => async dispatch => {
     const res = appList.feed.results;
     let maxIndex = (page * 10);
     let minIndex = maxIndex - 10;
-    const apps = res.slice(minIndex, maxIndex)
+    const apps = res.slice(minIndex, maxIndex);
 
     const appDetails = [];
 
