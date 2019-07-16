@@ -1,16 +1,21 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { fetchRecommendedList } from '../../actions';
 
-import Item from './Item'
+import Item from './Item';
 
 import './Recommendation.css';
 
 class Recommendation extends Component {
     componentDidMount() {
         this.props.fetchRecommendedList();
+    };
+
+    componentDidUpdate(prev) {
+        if(prev.keyword !== this.props.keyword) {
+            this.props.fetchRecommendedList(this.props.keyword);
+        };
     };
 
     renderList() {
@@ -36,8 +41,8 @@ class Recommendation extends Component {
     };
 };
 
-const mapStateToProps = ({ recommended }) => {
-    return { recommended };
+const mapStateToProps = ({ recommended, keyword }) => {
+    return { recommended, keyword };
 };
 
 export default connect(mapStateToProps, { fetchRecommendedList })(Recommendation);

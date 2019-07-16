@@ -16,6 +16,9 @@ class Listing extends Component {
         if(prev.pageNum !== this.props.pageNum) {
             this.props.fetchAppList(this.props.pageNum);
         }
+        if(prev.keyword !== this.props.keyword) {
+            this.props.fetchAppList(this.props.pageNum, this.props.keyword);
+        }
     }
 
     renderItem () {
@@ -34,8 +37,8 @@ class Listing extends Component {
     };
 };
 
-const mapStateToProps = ({ appList, pageNum }) => {
-    return { appList, pageNum };
+const mapStateToProps = ({ appList, pageNum, keyword }) => {
+    return { appList, pageNum, keyword };
 };
 
 export default connect(mapStateToProps, { fetchAppList, setPageNumber })(Listing);
