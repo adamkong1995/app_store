@@ -30,7 +30,7 @@ class Recommendation extends Component {
 
     render() {
         return (
-            <div>
+            <div className='recommendation'>
                 <h3>Recommendation</h3>
                 <ul>
                     {this.renderList()}

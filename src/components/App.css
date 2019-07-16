@@ -14,3 +14,18 @@ html {
     color: #807d7d;
     font-size: 12px;
 }
+
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background : #cfcfcf;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb { 
+    background : rgba(92, 92, 92, 0.5);
+    border-radius: 10px;
+    box-shadow:  0 0 6px rgba(0, 0, 0, 0.5);
+}

@@ -29,7 +29,7 @@ class Listing extends Component {
 
     render() {
         return (
-            <div style={{"overflowY": "scroll", "height":"600px"}}>
+            <div className='listing'>
                 {this.renderItem()}
                 <Pagination setPageNumber={this.props.setPageNumber}/>
             </div>
