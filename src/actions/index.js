@@ -2,7 +2,11 @@ import axios from 'axios';
 import recommended from '../data/recommended';
 import appList from '../data/top100';
 
-import { FETCH_RECOMMENDED_LIST, FETCH_APP_LIST, SET_CURRENT_PAGE, ADD_CURRENT_PAGE, SUBTRACT_CURRENT_PAGE } from './types';
+import { UPDATE_SEARCH_BAR, FETCH_RECOMMENDED_LIST, FETCH_APP_LIST, SET_CURRENT_PAGE, ADD_CURRENT_PAGE, SUBTRACT_CURRENT_PAGE } from './types';
+
+export const updateSearchBar = keyword => async dispatch => {
+    dispatch({ type: UPDATE_SEARCH_BAR, payload: keyword });
+};
 
 export const fetchRecommendedList = () => async dispatch => {
     const res = recommended.feed.results;
