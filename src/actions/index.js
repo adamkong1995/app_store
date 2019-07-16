@@ -11,8 +11,9 @@ export const fetchAppList = page => async dispatch => {
 
     const appDetails = [];
 
-    for(const app of apps) {
-        let res = await axios.get(`https://itunes.apple.com/hk/lookup?id=${app.id}`);
+    for(let i=0; i<apps.length; i++) {
+        let res = await axios.get(`https://itunes.apple.com/hk/lookup?id=${apps[i].id}`);
+        res.data.results[0].ranking = i + (page * 10 - 9)
         await appDetails.push(res.data.results[0]);
     };
 

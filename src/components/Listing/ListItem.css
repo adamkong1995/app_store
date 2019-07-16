@@ -1,0 +1,14 @@
+.container {
+    border-top: 1px groove grey;
+    display: grid;
+    grid-template-columns: 15px 120px auto;
+    padding: 15px;
+}
+
+.odd {
+    border-radius: 50%;
+}
+
+.even {
+    border-radius: 25%;
+}

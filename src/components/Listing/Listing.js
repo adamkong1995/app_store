@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchAppList, setPageNumber } from '../../actions';
-import Pagination from './Pagination';
 
-const ListItem = () => <div>ListItem</div>;
+import ListItem from './ListItem';
+import Pagination from './Pagination';
 
 class Listing extends Component {
     componentDidMount() {
@@ -19,8 +19,8 @@ class Listing extends Component {
     }
 
     renderItem () {
-        return _.map(this.props.appList, ({artistName})=> {
-            return <div>{artistName}</div>
+        return _.map(this.props.appList, ({artworkUrl512, trackName, primaryGenreName, averageUserRating, userRatingCount, ranking})=> {
+            return <ListItem icon={artworkUrl512} name={trackName} genre={primaryGenreName} rating={averageUserRating} userCount={userRatingCount} ranking={ranking} />
         })
     }
 
