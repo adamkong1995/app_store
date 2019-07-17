@@ -34,12 +34,12 @@ const renderStar = rating => {
 
     while (count < 5) {
         if(count < rating) {
-            star.push(<img src={fullStar} alt='star' width='15' />);
+            star.push(<img src={fullStar} alt='star' width='15' key={count} />);
         } else if (isHalfPoint) {
-            star.push(<img src={halfStar} alt='half' width='15' />);
+            star.push(<img src={halfStar} alt='half' width='15' key={count} />);
             isHalfPoint = false;
         } else if (count >= rating) {
-            star.push(<img src={emptyStar} alt='empty' width='15' />);
+            star.push(<img src={emptyStar} alt='empty' width='15' key={count} />);
         }
         count++;
     };

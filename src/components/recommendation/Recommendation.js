@@ -22,7 +22,7 @@ class Recommendation extends Component {
     renderList() {
         return _.map(this.props.recommended, ({name, icon, genre}) => {
             return (
-                <li>
+                <li key={name}>
                     <Item name={name} icon={icon} genre={genre} />
                 </li> 
             );

@@ -36,7 +36,15 @@ class Listing extends Component {
         };
         
         return _.map(this.props.appList, ({artworkUrl512, trackName, primaryGenreName, averageUserRating, userRatingCount, ranking})=> {
-            return <ListItem icon={artworkUrl512} name={trackName} genre={primaryGenreName} rating={averageUserRating} userCount={userRatingCount} ranking={ranking} />
+            return <ListItem 
+                        key={trackName} 
+                        icon={artworkUrl512} 
+                        name={trackName} 
+                        genre={primaryGenreName} 
+                        rating={averageUserRating} 
+                        userCount={userRatingCount} 
+                        ranking={ranking} 
+                    />
         });
     };
 
