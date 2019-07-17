@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import './Pagination.css';
+
 const Pagination = ({ pageNum, setPageNumber }) => {
     return (
-        <div>
+        <div className='pagination'>
             <button onClick={()=>setPageNumber('subtract', pageNum)}>Previous</button>
             {renderButton(setPageNumber)}
             <button onClick={()=>setPageNumber('add', pageNum)}>Next</button>
