@@ -1,0 +1,18 @@
+.listing {
+    text-align: center;
+}
+
+.listing .container {
+    text-align: left;
+}
+
+svg {    
+    animation: spinner 2s linear infinite;
+    width: 70px;
+    height: 70px;
+}
+
+@keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
