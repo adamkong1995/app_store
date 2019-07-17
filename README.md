@@ -1,6 +1,6 @@
 ## App Store Single Page Application
 
-<img src='https://github.com/adamkong1995/app_store/blob/master/public/app_store.PNG' height="400px" width="700px" />
+<img src='https://github.com/adamkong1995/app_store/blob/master/public/app_store.PNG' height="400px" width="500px" />
 
 #### To run this application
 1. Clone this repo
