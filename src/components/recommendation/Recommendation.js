@@ -13,6 +13,7 @@ class Recommendation extends Component {
     };
 
     componentDidUpdate(prev) {
+        // If user entered new keywords, then fetch records for that keywords
         if(prev.keyword !== this.props.keyword) {
             this.props.fetchRecommendedList(this.props.keyword);
         };

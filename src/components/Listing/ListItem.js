@@ -21,6 +21,7 @@ const ListItem = ({ icon, name, genre, rating, userCount, ranking }) => {
 
 const isOdd = n => n % 2 === 0;
 
+// Use star to represent user rating
 const renderStar = rating => {
     let star = [];
     let count = 0;

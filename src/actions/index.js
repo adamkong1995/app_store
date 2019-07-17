@@ -11,6 +11,8 @@ export const updateKeyword = keyword => async dispatch => {
 
 export const fetchRecommendedList = (keyword='') => async dispatch => {
     let res = [];
+
+    // Do filtering if keyword (Search bar) is passed
     if (keyword !== '') {
         res = recommended.feed.results.filter(recommend => recommend.name.includes(keyword)) || [];
     } else {
@@ -18,6 +20,7 @@ export const fetchRecommendedList = (keyword='') => async dispatch => {
     }
     const recommends = [];
 
+    // Return the neccessary properties
     for(let i=0; i<res.length; i++) {
         let recommend = {};
 
@@ -31,20 +34,26 @@ export const fetchRecommendedList = (keyword='') => async dispatch => {
 
 export const fetchAppList = (page, keyword='') => async dispatch => {
     let res = [];
+
+    // Do filtering if keyword is passed
     if (keyword !== '') {
         res = appList.feed.results.filter(app => app.name.includes(keyword)) || [];
     } else {
         res = appList.feed.results;
     };
 
+    // Return 10 records for certain page
     let maxIndex = (page * 10);
     let minIndex = maxIndex - 10;
     const apps = res.slice(minIndex, maxIndex);
 
     const appDetails = [];
 
+    // Fetch the app details from itunes api
     for(let i=0; i<apps.length; i++) {
         let res = await axios.get(`https://itunes.apple.com/hk/lookup?id=${apps[i].id}`);
+        
+        // Add the app store ranking as a property
         res.data.results[0].ranking = i + (page * 10 - 9)
         await appDetails.push(res.data.results[0]);
     };
