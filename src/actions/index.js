@@ -1,22 +1,30 @@
 import axios from 'axios';
-import recommended from '../data/recommended';
-import appList from '../data/top100';
-
-import { UPDATE_KEYWORD, FETCH_RECOMMENDED_LIST, FETCH_APP_LIST, SET_CURRENT_PAGE, ADD_CURRENT_PAGE, SUBTRACT_CURRENT_PAGE } from './types';
+import { UPDATE_KEYWORD, FETCH_APP_API, FETCH_RECOMMENDED_API, FETCH_RECOMMENDED_LIST, FETCH_APP_LIST, SET_CURRENT_PAGE, ADD_CURRENT_PAGE, SUBTRACT_CURRENT_PAGE } from './types';
 
 
 export const updateKeyword = keyword => async dispatch => {
     dispatch({ type: UPDATE_KEYWORD, payload: keyword });
 };
 
-export const fetchRecommendedList = (keyword='') => async dispatch => {
+export const fetchAppApi = () => async dispatch => {
+    const appList = await axios.get('https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-free/all/100/explicit.json');
+    dispatch({ type: FETCH_APP_API, payload: appList.data.feed.results});
+}
+
+export const fetchRecommendedApi = () => async dispatch => {
+    const recommended = await axios.get('https://rss.itunes.apple.com/api/v1/hk/ios-apps/top-grossing/all/10/explicit.json');
+    dispatch({ type: FETCH_RECOMMENDED_API, payload: recommended.data.feed.results});
+}
+
+export const fetchRecommendedList = (keyword='') => async (dispatch, getState) => {
     let res = [];
+    const { recommendedApi } = getState();
 
     // Do filtering if keyword (Search bar) is passed
     if (keyword !== '') {
-        res = recommended.feed.results.filter(recommend => recommend.name.includes(keyword)) || [];
+        res = recommendedApi.filter(recommend => recommend.name.includes(keyword)) || [];
     } else {
-        res = recommended.feed.results;
+        res = recommendedApi;
     }
     const recommends = [];
 
@@ -32,14 +40,15 @@ export const fetchRecommendedList = (keyword='') => async dispatch => {
     await dispatch({ type: FETCH_RECOMMENDED_LIST, payload: recommends });
 };
 
-export const fetchAppList = (page, keyword='') => async dispatch => {
+export const fetchAppList = (page, keyword='') => async (dispatch, getState) => {
     let res = [];
+    const { appApi } = getState();
 
     // Do filtering if keyword is passed
     if (keyword !== '') {
-        res = appList.feed.results.filter(app => app.name.includes(keyword)) || [];
+        res = appApi.filter(app => app.name.includes(keyword)) || [];
     } else {
-        res = appList.feed.results;
+        res = appApi;
     };
 
     // Return 10 records for certain page

@@ -8,10 +8,6 @@ import Item from './Item';
 import './Recommendation.css';
 
 class Recommendation extends Component {
-    componentDidMount() {
-        this.props.fetchRecommendedList();
-    };
-
     componentDidUpdate(prev) {
         // If user entered new keywords, then fetch records for that keywords
         if(prev.keyword !== this.props.keyword) {

@@ -12,10 +12,6 @@ import { FaSpinner } from 'react-icons/fa';
 import './Listing.css';
 
 class Listing extends Component {
-    componentDidMount() {
-        this.props.fetchAppList(this.props.pageNum);
-    };
-
     componentDidUpdate(prev) {
         // If user selected a new page, then fetch records for that page
         if(prev.pageNum !== this.props.pageNum) {
